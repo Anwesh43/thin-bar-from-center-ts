@@ -41,7 +41,7 @@ export const useDimension = () => {
     }
 }
 
-export const useStyle = (w : number, h : number, scale : number) {
+export const useStyle = (w : number, h : number, scale : number) => {
     const sf : number = Math.sin(scale * Math.PI)
     const bw : number = Math.min(w, h) / 9
     const sw : number = Math.min(w, h) / 15 
@@ -65,10 +65,10 @@ export const useStyle = (w : number, h : number, scale : number) {
              }
         },
         barXStyle(i : number) : CSSProperties {
-            const left = `${(w / 2 - bw / 2) * (1 - sf) * (1 - i) + (w / 2 + bw / 2) * i}px`
-            const top = `${h / 2 - bw / 2}px`
-            const width = `${(w / 2 - bw / 2) * scale}px`
-            const height = `${bw}px`
+            const left = `${(w / 2 - bw / 2) * (1 - sf) * (1 - i) + (w / 2 + sw / 2) * i}px`
+            const top = `${h / 2 - sw / 2}px`
+            const width = `${(w / 2 - sw / 2) * sf}px`
+            const height = `${sw}px`
             return {
                 left, 
                 top, 
@@ -80,10 +80,10 @@ export const useStyle = (w : number, h : number, scale : number) {
 
         },
         barYStyle(i : number) : CSSProperties {
-            const left = `${bw}px`
+            const left = `${w / 2 - sw / 2}px`
             const top = `${(h / 2 - bw / 2) * (1 - sf) * (1 - i) + (h / 2 + bw / 2) * i}px`
-            const width = `${bw}px`
-            const height = `${(h / 2 - bw / 2) * sf}px`
+            const width = `${sw}px`
+            const height = `${(h / 2 - sw / 2) * sf}px`
             return {
                 position, 
                 left,
